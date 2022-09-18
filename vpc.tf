@@ -1,12 +1,12 @@
 # Create VPC
 # terraform aws create vpc
-resource "aws_vpc" "vpc" {
+resource "aws_vpc" "vpc_igor" {
   cidr_block           = var.vpc-cidr
   instance_tenancy     = "default"
   enable_dns_hostnames = true
 
   tags = {
-    Name = "test Vpc"
+    Name = "test Vpc_igor"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "internet-gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "Test IGW"
+    Name = "Test IGW_igor"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "public-subnet-1" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "public subnet 1 "
+    Name = "public subnet 1_igor "
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "public-subnet-2" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "public subnet 2 "
+    Name = "public subnet 2_igor "
   }
 }
 
@@ -57,7 +57,7 @@ resource "aws_route_table" "public-route-table" {
   }
 
   tags = {
-    Name = "public route table"
+    Name = "public route table_igor"
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_subnet" "private-subnet-1" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "Private Subnet 1 | App Tier"
+    Name = "Private Subnet 1_igor | App Tier"
   }
 }
 
@@ -97,7 +97,7 @@ resource "aws_subnet" "private-subnet-2" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "Private Subnet 2 | App Tier"
+    Name = "Private Subnet 2_igor | App Tier"
   }
 }
 
@@ -110,7 +110,7 @@ resource "aws_subnet" "private-subnet-3" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "Private Subnet 3 | Database Tier"
+    Name = "Private Subnet 3_igor | Database Tier"
   }
 }
 
@@ -123,6 +123,6 @@ resource "aws_subnet" "private-subnet-4" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "Private Subnet 4 | Database Tier"
+    Name = "Private Subnet 4_igor | Database Tier"
   }
 }
