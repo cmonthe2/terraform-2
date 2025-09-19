@@ -1,0 +1,24 @@
+name: OIDC Test
+
+on:
+  push:
+    branches: [ main ]   # run when you push to main (change as needed)
+
+permissions:
+  id-token: write       # REQUIRED so Actions can mint an OIDC token
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (via OIDC)
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::204469479814:oidc-provider/token.actions.githubusercontent.com
+          aws-region: us-east-1
+
+      - name: Show AWS identity
+        run: aws sts get-caller-identity
